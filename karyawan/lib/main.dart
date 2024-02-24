@@ -44,7 +44,7 @@ class MyHomePage extends StatelessWidget {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                ListTile(
+                return ListTile(
                   title: Text(
                     snapshot.data![index].nama,
                     style: const TextStyle(fontWeight: FontWeight.bold),
