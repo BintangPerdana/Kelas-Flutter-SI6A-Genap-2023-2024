@@ -77,7 +77,7 @@ class HomeScreenState extends State<HomeScreen> {
             itemBuilder: (context, index) {
               final Movie movie = movies[index];
               return GestureDetector(
-                //TODO: janganlupa onTap setelah detailscreen siap
+                onTap: () {},
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
