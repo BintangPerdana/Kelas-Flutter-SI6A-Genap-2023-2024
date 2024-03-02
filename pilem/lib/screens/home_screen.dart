@@ -41,6 +41,24 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Pilem'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildMovieList('All Movies', _allMovies),
+            _buildMovieList('Trending Movies', _trendingMovies),
+            _buildMovieList('Popular Movies', _popularMovies)
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMovieList(String title, List<Movie> movies) {
+    return Column();
   }
 }
