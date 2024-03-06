@@ -43,6 +43,67 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Search'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 1.0),
+                  borderRadius: BorderRadius.circular(5.0)),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    controller: _searchController,
+                    decoration: const InputDecoration(
+                        hintText: 'Search movies ...',
+                        border: InputBorder.none),
+                  )),
+                  Visibility(
+                      visible: _searchController.text.isNotEmpty,
+                      child: IconButton(
+                        icon: const Icon(Icons.clear),
+                        onPressed: () {
+                          _searchController.clear();
+                          setState(() {
+                            _searchResult.clear();
+                          });
+                        },
+                      ))
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Expanded(
+                child: ListView.builder(
+              itemCount: _searchResult.length,
+              itemBuilder: (context, index) {
+                final Movie movie = _searchResult[index];
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: ListTile(
+                    leading: Image.network(
+                      'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              },
+            ))
+          ],
+        ),
+      ),
+    );
   }
 }
