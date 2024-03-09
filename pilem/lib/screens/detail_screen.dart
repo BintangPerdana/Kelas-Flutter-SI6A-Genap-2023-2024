@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:pilem/models/movie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,7 +29,22 @@ class _DetailScreenState extends State<DetailScreen> {
     });
   }
 
-  
+  Future<void> _toggleFavorite() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isFavorite = !_isFavorite;
+    });
+
+    if (_isFavorite) {
+      final String movieJson = jsonEncode(widget.movie.toJson());
+      prefs.setString('movie_${widget.movie.id}', movieJson);
+
+      List<String> favoriteMovieIds =
+          prefs.getStringList('favoriteMovies') ?? [];
+      favoriteMovieIds.add(widget.movie.id.toString());
+      prefs.setStringList('favoriteMovies', favoriteMovieIds);
+    } else {}
+  }
 
   @override
   Widget build(BuildContext context) {
