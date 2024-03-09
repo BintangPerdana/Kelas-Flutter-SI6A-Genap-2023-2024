@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pilem/models/movie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
