@@ -43,7 +43,14 @@ class _DetailScreenState extends State<DetailScreen> {
           prefs.getStringList('favoriteMovies') ?? [];
       favoriteMovieIds.add(widget.movie.id.toString());
       prefs.setStringList('favoriteMovies', favoriteMovieIds);
-    } else {}
+    } else {
+      prefs.remove('movie_${widget.movie.id}');
+
+      List<String> favoriteMovieIds =
+          prefs.getStringList('favoriteMovies') ?? [];
+      favoriteMovieIds.remove(widget.movie.id.toString());
+      prefs.setStringList('favoriteMovies', favoriteMovieIds);
+    }
   }
 
   @override
