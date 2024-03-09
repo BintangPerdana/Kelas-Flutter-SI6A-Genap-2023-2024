@@ -19,7 +19,9 @@ class DetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+                movie.posterPath != ''
+                    ? 'https://image.tmdb.org/t/p/w500${movie.backdropPath}'
+                    : 'https://via.placeholder.com/50x50.png?text=No+Image',
                 height: 300,
                 width: double.infinity,
                 fit: BoxFit.cover,

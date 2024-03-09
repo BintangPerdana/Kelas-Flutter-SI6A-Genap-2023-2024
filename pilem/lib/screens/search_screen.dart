@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pilem/screens/detail_screen.dart';
 import 'package:pilem/services/api_service.dart';
 import 'package:pilem/models/movie.dart';
 
@@ -99,6 +100,14 @@ class _SearchScreenState extends State<SearchScreen> {
                       width: 50,
                       fit: BoxFit.cover,
                     ),
+                    title: Text(movie.title),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailScreen(movie: movie),
+                          ));
+                    },
                   ),
                 );
               },
