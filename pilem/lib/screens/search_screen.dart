@@ -92,7 +92,9 @@ class _SearchScreenState extends State<SearchScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: ListTile(
                     leading: Image.network(
-                      'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                      movie.posterPath != ''
+                          ? 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
+                          : 'https://via.placeholder.com/50x50.png?text=No+Image',
                       height: 50,
                       width: 50,
                       fit: BoxFit.cover,
