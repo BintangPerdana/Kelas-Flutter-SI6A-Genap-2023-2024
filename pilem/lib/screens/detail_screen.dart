@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pilem/models/movie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -65,13 +66,27 @@ class _DetailScreenState extends State<DetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(
-                widget.movie.posterPath != ''
-                    ? 'https://image.tmdb.org/t/p/w500${widget.movie.backdropPath}'
-                    : 'https://via.placeholder.com/50x50.png?text=No+Image',
-                height: 300,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              Stack(
+                children: [
+                  Image.network(
+                    widget.movie.posterPath != ''
+                        ? 'https://image.tmdb.org/t/p/w500${widget.movie.backdropPath}'
+                        : 'https://via.placeholder.com/50x50.png?text=No+Image',
+                    height: 300,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                  Positioned(
+                      bottom: 8,
+                      right: 8,
+                      child: IconButton(
+                        icon: Icon(
+                          _isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: Colors.red,
+                        ),
+                        onPressed: _toggleFavorite,
+                      )),
+                ],
               ),
               const SizedBox(
                 height: 20,
