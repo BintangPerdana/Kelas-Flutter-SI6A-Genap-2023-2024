@@ -44,3 +44,4 @@ app.*.map.json
 
 # Local configuration file (sdk path, etc)
 /lib/firebase_options.dart
+/android/app/google-services.json
