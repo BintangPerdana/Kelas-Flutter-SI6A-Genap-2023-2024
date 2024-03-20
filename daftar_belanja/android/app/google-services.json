@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "443203921083",
+    "project_id": "first-app-70a90",
+    "storage_bucket": "first-app-70a90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443203921083:android:cd4448ddc7e2a27422359e",
+        "android_client_info": {
+          "package_name": "com.example.daftar_belanja"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACiSU5yLxYepI7LPguO2c_zqrKNU7q2yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
