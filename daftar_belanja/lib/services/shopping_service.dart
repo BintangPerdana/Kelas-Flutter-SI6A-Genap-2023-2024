@@ -20,7 +20,13 @@ class ShoppingService {
     });
   }
 
-  //TODO 2: Bikin method untuk add shopping list
+  //TODO 2: Bikin method untuk add shopping item
+  void addShoppingItem(String itemName) {
+    _database.push().set({'name': itemName});
+  }
 
-  //TODO 3: Bikin method untuk remove shopping list
+  //TODO 3: Bikin method untuk remove shopping item
+  Future<void> removeShoppingItem(String key) async {
+    await _database.child(key).remove();
+  }
 }
