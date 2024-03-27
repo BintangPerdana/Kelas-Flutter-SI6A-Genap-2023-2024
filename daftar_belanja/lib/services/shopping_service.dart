@@ -2,7 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 
 class ShoppingService {
   final DatabaseReference _database =
-      FirebaseDatabase.instance.ref().child('shopping_list');
+      FirebaseDatabase.instance.ref().child('daftar_belanja');
 
   //TODO 1: Bikin method untuk get shopping list
   Stream<Map<String, String>> getShoppingList() {
