@@ -1,5 +1,7 @@
+import 'package:daftar_belanja/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:daftar_belanja/services/shopping_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ShoppingListScreen extends StatefulWidget {
   const ShoppingListScreen({super.key});
@@ -17,6 +19,16 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Daftar Belanja'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
+            },
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -34,7 +46,7 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                 IconButton(
                   icon: const Icon(Icons.add),
                   onPressed: () {
-                    _shoppingService.addShoppingItem(_controller.text);
+                    _shoppingService.addShoppingItem(_controller.text, context);
                     _controller.clear();
                   },
                 )

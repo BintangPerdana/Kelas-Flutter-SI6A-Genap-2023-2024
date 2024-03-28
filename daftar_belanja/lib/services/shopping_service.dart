@@ -1,8 +1,9 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
 
 class ShoppingService {
   final DatabaseReference _database =
-      FirebaseDatabase.instance.ref().child('daftar_belanja');
+      FirebaseDatabase.instance.ref().child('shopping_list');
 
   //TODO 1: Bikin method untuk get shopping list
   Stream<Map<String, String>> getShoppingList() {
@@ -21,8 +22,13 @@ class ShoppingService {
   }
 
   //TODO 2: Bikin method untuk add shopping item
-  void addShoppingItem(String itemName) {
-    _database.push().set({'name': itemName});
+  void addShoppingItem(String itemName, BuildContext context) {
+    if (itemName.isEmpty) {
+      const warning = SnackBar(content: Text('Item Belanja Kosong!'));
+      ScaffoldMessenger.of(context).showSnackBar(warning);
+    } else {
+      _database.push().set({'name': itemName});
+    }
   }
 
   //TODO 3: Bikin method untuk remove shopping item
